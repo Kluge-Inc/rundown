@@ -1,0 +1,35 @@
+<tr><td>
+
+<div class="object-id">
+  #<%= leaflet.id %>
+</div>
+
+<p>
+  <strong>Created on:</strong>
+  <%= leaflet.created_at %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= leaflet.status %>
+</p>
+
+<p>
+  
+  <% if leaflet.entries.any? %>
+    <strong>Entries</strong>
+  <% else %>
+    <i>No entries yet</i>
+  <% end %>
+
+  <ul>
+    <% leaflet.entries.each do |entry| %>
+      <li>
+      <span class="timestamp"><%= entry.published_at.strftime("%d.%m.%Y %H:%M") %></span>
+        <%= link_to entry.title, entry %> (<%= link_to entry.feed.title, entry.feed %>)
+      </li>
+    <% end %>
+  </ul>
+</p>
+
+</td></tr>

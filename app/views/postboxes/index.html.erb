@@ -1,0 +1,31 @@
+<h1>Listing postboxes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Periodity</th>
+      <th>Owner</th>
+      <th>Records in active leaflet</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @postboxes.each do |postbox| %>
+      <tr>
+        <td><%= postbox.email %></td>
+        <td><%= postbox.periodity %></td>
+        <td><%= postbox.user.email %></td>
+        <td><%= postbox.find_or_create_active_leaflet.entries.count %></td>
+        <td><%= link_to 'Show', postbox %></td>
+        <td><%= link_to 'Edit', edit_postbox_path(postbox) %></td>
+        <td><%= link_to 'Destroy', postbox, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Postbox', new_postbox_path %>

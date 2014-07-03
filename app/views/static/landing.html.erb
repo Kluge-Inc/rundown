@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,24 +8,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<% if user_signed_in? %>
-  <div class="user-info">
-    <%= current_user.email %>
-  </div>
-<% end %>
+<body class="landing">
 
 <div class="logo" >
   <h1>Rund<span style="color: rgb(85, 100, 163);">&#8251;</span>wn</h1>
 </div>
-
-<ul class="menu">
-  <li><%=link_to "&#9993;".html_safe, postboxes_path %></li>
-  <li><%=link_to "&#9016;".html_safe, feeds_path %></li>
-</ul>
-
-<%= yield %>
 
 </body>
 </html>

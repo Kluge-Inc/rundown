@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  
+  root 'static#landing'
+
+  devise_for :users
+
+  resources :feeds do
+    member do
+      get 'fetch'
+    end
+
+    collection do
+      get 'fetch', to: 'feeds#fetch_all'
+    end
+  end
+
+  resources :feed_entries
+  resources :postboxes
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

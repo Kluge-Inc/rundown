@@ -1,0 +1,43 @@
+<tr><td>
+
+<div class="object-id">
+  #<%= feed_entry.id %>
+</div>
+
+<p>
+  <strong>Original ID:</strong>
+  <%= feed_entry.original_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= link_to feed_entry.title, feed_entry %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= link_to feed_entry.url, feed_entry.url %>
+</p>
+
+<p>
+  <strong>Yandex Rich Content</strong>
+  <%= link_to 'check', "http://rca.yandex.com/?key=24LbkxMc&url=#{feed_entry.url}" %>
+</p>
+
+<p>
+  <strong>Published at:</strong>
+  <%= feed_entry.published_at %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= feed_entry.image_url %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= feed_entry.summary %>
+</p>
+
+
+</td></tr>

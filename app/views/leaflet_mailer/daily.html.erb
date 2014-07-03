@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Rund&#8251;wn</h1>
+    <p>Your latest news has arrived!</p>
+
+    <p>
+      <strong>Digest #<%= @leaflet.id %> created on:</strong>
+      <%= @leaflet.created_at.strftime("%d.%m.%Y %H:%M") %>
+    </p>
+
+    <p>
+      <strong>Entries:</strong>
+      <ul>
+        <% @leaflet.entries.each do |entry| %>
+          <li>
+          <span class="timestamp"><%= entry.published_at.strftime("%d.%m.%Y %H:%M") %></span>
+            <%= link_to entry.title, entry.url %> (<%= entry.feed.title %>)
+          </li>
+        <% end %>
+      </ul>
+    </p>
+
+  </body>
+</html>

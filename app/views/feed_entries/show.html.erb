@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Feed:</strong>
+  <%= @feed_entry.feed %>
+</p>
+
+<p>
+  <strong>Original ID:</strong>
+  <%= @feed_entry.original_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @feed_entry.title %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= link_to @feed_entry.url, @feed_entry.url %>
+</p>
+
+<p>
+  <strong>Yandex Rich Content</strong>
+  <%= link_to 'check', "http://rca.yandex.com/?key=24LbkxMc&url=#{@feed_entry.url}" %>
+</p>
+
+<p>
+  <strong>Published at:</strong>
+  <%= @feed_entry.published_at %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @feed_entry.image_url %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @feed_entry.summary %>
+</p>
+
+<p>
+  <strong>Enhanced content:</strong>
+  <%= raw @feed_entry.enhance %>
+</p>
+
+<%= link_to 'Back', feed_path(@feed_entry.feed) %>

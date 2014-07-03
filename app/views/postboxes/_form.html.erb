@@ -1,0 +1,32 @@
+<%= form_for(@postbox) do |f| %>
+  <% if @postbox.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@postbox.errors.count, "error") %> prohibited this postbox from being saved:</h2>
+
+      <ul>
+      <% @postbox.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :periodity %><br>
+    <%= f.select :periodity, 
+                options_for_select(
+                    Postbox.periodities.collect { |s| [s[0].humanize, s[0]] }, 
+                    selected: @postbox.periodity), 
+                {}, 
+                class: "form-control" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

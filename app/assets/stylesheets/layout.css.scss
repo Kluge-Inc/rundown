@@ -1,0 +1,85 @@
+body {
+  margin: 50px 200px 20px 150px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+caption {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+table, tbody {
+  border: 1px solid rgb(214, 214, 214);
+  padding: 5px 20px;
+  margin-bottom: 10px;
+  border-spacing: 0px;
+
+  td {
+    border-bottom: 1px solid green;
+    padding: 3px 5px;
+    position: relative;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  div.object-id { 
+    position: absolute;
+    right: 5px;
+    top: 15px;
+    color: rgb(201, 201, 201);
+  }
+}
+
+div.user-info {
+  background-color: #464879;
+  color: white;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 4px 30px 1px 10px;
+  text-align: right;
+}
+
+div.logo {
+    position: fixed;
+    right: -40px;
+    bottom: 57px;
+     -ms-transform: rotate(270deg); /* IE 9 */
+    -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
+    transform: rotate(270deg);
+    color: rgb(49, 49, 49);
+}
+
+ul.menu {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  font-size: 40px;
+  list-style-type: none;
+  margin: 45px 30px 0px 30px;
+  padding: 0px;
+
+  li {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    background: none;
+    color: red;
+  }
+}
+
+span.gray {
+  color: gray;
+}
