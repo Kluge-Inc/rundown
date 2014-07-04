@@ -11,7 +11,7 @@ class Leaflet < ActiveRecord::Base
   # Has several statuses available
   enum status: [
     :populating,  # active leaflet open for new entries
-    :sending,     # sending in progress
+    :pending,     # sending in progress
     :delivered    # leaflet successfuly delivered
   ]
 

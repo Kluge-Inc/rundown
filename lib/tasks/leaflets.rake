@@ -1,4 +1,5 @@
 namespace 'leaflets:deliver' do
+
   desc "Deliver daily leaflets"
   task daily: :environment do
     deliver_with_periodity(:daily)
@@ -14,7 +15,20 @@ namespace 'leaflets:deliver' do
     deliver_with_periodity(:weekly)
   end
   
-  
+  desc "Deliver pending leaflets"
+  task pending: :environment do
+    # Find suitable leaflets
+    leaflets = Leaflet.pending
+
+    puts "[INFO] no leaflets found, skipping" unless leaflets.any?
+
+    leaflets.each do |leaflet|
+      puts "[INFO] leaflet #{leaflet.id} in postbox #{leaflet.postbox.id} scheduled for delivery"
+      deliver(leaflet)
+    end
+  end
+
+
   private
 
   ##
@@ -37,19 +51,24 @@ namespace 'leaflets:deliver' do
       end
 
       puts "[INFO] leaflet #{leaflet.id} in postbox #{leaflet.postbox.id} scheduled for delivery"
-
-      # Deliver leaflet through mailer
-      if LeafletMailer.daily(leaflet).deliver 
-        puts "[OK] leaflet delivered"
-        leaflet.update(status: :delivered)
-      else
-        puts "[ERROR] delivery failed"
-        
-        # Move leaflet to sending queue
-        leaflet.update(status: :sending)
-      end
+      deliver(leaflet)
     end
+  end
 
+  def deliver(leaflet)
+    # Deliver leaflet through mailer
+    begin
+      LeafletMailer.daily(leaflet).deliver 
+      puts "[OK] leaflet delivered"
+      leaflet.update(status: :delivered)
+    rescue
+      puts "[ERROR] delivery failed"
+      
+      # Move leaflet to pending queue
+      leaflet.update(status: :pending)
+
+      return false
+    end
   end
 
 end
