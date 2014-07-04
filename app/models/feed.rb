@@ -16,19 +16,25 @@ class Feed < ActiveRecord::Base
   def fetch
     feed = Feedjira::Feed.fetch_and_parse(self.url)
     
-    self.update!(title: feed.title) if self.title.nil?
+    # Handle empty feed fetching
+    unless feed.is_a?(Fixnum)
+      self.update!(title: feed.title) if self.title.nil?
 
-    feed.entries.each do |entry|
-      unless self.entries.exists? :original_id => entry.id
-        self.entries.create!(
-          :title         => entry.title,
-          :summary      => entry.summary,
-          :url          => entry.url,
-          :published_at => entry.published,
-          :original_id  => entry.id
-        )
+      feed.entries.each do |entry|
+        unless self.entries.exists? :original_id => entry.id
+          self.entries.create!(
+            :title         => entry.title,
+            :summary      => entry.summary,
+            :url          => entry.url,
+            :published_at => entry.published,
+            :original_id  => entry.id
+          )
+        end
       end
+    else
+      logger.error "[ERROR] Feed expected, got Fixnum instead (in Feed#fetch)"
     end
+
   end
 
   ##
