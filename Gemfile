@@ -35,6 +35,9 @@ gem "ruby-readability", :require => 'readability'
 # User control
 gem 'devise'
 
+# Cron control
+gem 'whenever', :require => false
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
