@@ -32,7 +32,8 @@ class Feed < ActiveRecord::Base
         end
       end
     else
-      logger.error "[ERROR] Feed expected, got Fixnum instead (in Feed#fetch)"
+      logger.error "[ERROR] Feed expected, got Fixnum instead (in Feed#fetch for feed.id #{self.id})"
+      return false
     end
 
   end
