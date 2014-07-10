@@ -12,3 +12,22 @@ body.landing div.logo {
     color: black;
     font-size: 18px;
 }
+
+div.velid-logo {
+    font-size: 15px; 
+    font-style: italic; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0;
+    margin: 20px;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover {
+        background: none;
+        color: black;
+    }
+}
