@@ -4,12 +4,12 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{rails@188.226.223.22}
-# role :web, %w{deploy@188.226.223.22}
-# role :db,  %w{deploy@188.226.223.22}
+role :app, %w{rails@hostname}
+role :web, %w{rails@hostname}
+role :db,  %w{rails@hostname}
 
 # Set environment to production
-set :rails_env, :production
+set :rails_env, :development
 
 # Extended Server Syntax
 # ======================
