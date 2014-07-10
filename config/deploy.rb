@@ -1,6 +1,11 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
+## RVM configuration options
+set :rvm_type, :system # use system-installed rvm (defaults to :auto)
+set :rvm_ruby_version, 'ruby-2.1.2@rails' # specify ruby fersion and gemset to use
+# set :rvm_custom_path, '~/.myveryownrvm'  # only needed if not detected
+
 set :application, 'rundown'
 set :repo_url, 'git@github.com:Velid/rundown.git'
 
@@ -8,7 +13,7 @@ set :repo_url, 'git@github.com:Velid/rundown.git'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
-# set :deploy_to, '/var/www/my_app'
+set :deploy_to, '/home/rails/rundown'
 
 # Default value for :scm is :git
 # set :scm, :git
