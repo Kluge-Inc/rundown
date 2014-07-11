@@ -9,6 +9,9 @@ class Feed < ActiveRecord::Base
   # Fetch latest entries after feed creation
   after_create :fetch
 
+  # Validations
+  validates_uniqueness_of :url
+
   ##
   # Get new entries from feed URL, create entries
   #
