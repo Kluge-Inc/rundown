@@ -7,15 +7,18 @@ Rails.application.routes.draw do
   resources :feeds do
     member do
       get 'fetch'
+      put 'subscribe'
+      put 'unsubscribe/:postbox_id', to: 'feeds#unsubscribe', as: :unsubscribe
     end
 
     collection do
       get 'fetch', to: 'feeds#fetch_all'
     end
   end
-
   resources :feed_entries
+  
   resources :postboxes
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

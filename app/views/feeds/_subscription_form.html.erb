@@ -1,0 +1,6 @@
+<%= form_tag subscribe_feed_path(feed), method: :put do %>
+  <div class="field" style="margin-top: 12px;">
+    <%= select_tag :postbox_id, options_from_collection_for_select(current_user.postboxes, "id", "email") %>
+    <%= submit_tag 'Subscribe' %>
+  </div>
+<% end %>

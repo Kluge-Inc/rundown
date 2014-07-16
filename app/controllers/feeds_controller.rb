@@ -1,5 +1,6 @@
 class FeedsController < ApplicationController
-  before_action :set_feed, only: [:show, :edit, :update, :destroy, :fetch]
+  before_action :set_feed, only: [:show, :edit, :update, :destroy, :fetch, :subscribe, :unsubscribe]
+  before_action :set_postbox, only: [:subscribe, :unsubscribe]
 
   # GET /feeds
   # GET /feeds.json
@@ -75,6 +76,36 @@ class FeedsController < ApplicationController
     
   end
 
+  ##
+  # Subscribe to the feed with one of the postboxes
+  #
+  # == Routes:
+  #  PUT /feeds/:id/subscribe
+  #
+  def subscribe
+    respond_to do |format|
+      if @postbox.feeds.include?(@feed)
+        format.html { redirect_to feeds_url, notice: "Selected postbox is already subscribed to the feed." }
+      else
+        @postbox.feeds << @feed
+        format.html { redirect_to feeds_url, notice: "Successfully subscribed to feed with #{@postbox.email}." }
+      end
+    end
+  end
+
+  ##
+  # Unsubscribe selected postbox from the feed 
+  #
+  # == Routes:
+  #  PUT /feeds/:id/unsubscribe
+  #
+  def unsubscribe
+    respond_to do |format|
+      if @postbox.feeds.delete(@feed)
+        format.html { redirect_to @postbox, notice: "Successfully unsubscribed from the feed." }
+      end
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -85,5 +116,9 @@ class FeedsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def feed_params
       params.require(:feed).permit(:url)
+    end
+
+    def set_postbox
+      @postbox = Postbox.find(params[:postbox_id])
     end
 end
