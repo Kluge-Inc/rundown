@@ -49,6 +49,9 @@ gem 'capistrano-rails', group: :development
 gem 'capistrano3-unicorn', require: false, group: :development
 gem 'capistrano-rvm', group: :development
 
+# Build configuration files from .example templates
+gem 'exemplify'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 

@@ -63,6 +63,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.2.1)
+    exemplify (0.0.4)
+      rails (>= 3.0.0)
     feedjira (1.3.0)
       curb (~> 0.8.1)
       loofah (~> 2.0.0)
@@ -177,6 +179,7 @@ DEPENDENCIES
   capistrano3-unicorn
   coffee-rails (~> 4.0.0)
   devise
+  exemplify
   feedjira
   jbuilder (~> 2.0)
   jquery-rails
