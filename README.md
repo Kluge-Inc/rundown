@@ -17,3 +17,8 @@
 gem install yard
 yardoc --output-dir docs/api/ 'app/**/*.rb'
 ```
+
+
+**Data Model**
+
+![Rundown Data Model](docs/datamodel.png)

@@ -13,17 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140703164345) do
 
-  create_table "deliveries", force: true do |t|
-    t.integer  "status"
-    t.integer  "postbox_id"
-    t.integer  "leaflet_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "deliveries", ["leaflet_id"], name: "index_deliveries_on_leaflet_id"
-  add_index "deliveries", ["postbox_id"], name: "index_deliveries_on_postbox_id"
-
   create_table "enties_in_leaflets", id: false, force: true do |t|
     t.integer "feed_entry_id"
     t.integer "leaflet_id"
