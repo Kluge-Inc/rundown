@@ -32,7 +32,7 @@
         <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         
         <td>
-          <%= render 'subscription_form', :feed => feed %>
+          <%= render 'subscription_form', :feed => feed if user_signed_in? %>
         </td>
 
       </tr>
